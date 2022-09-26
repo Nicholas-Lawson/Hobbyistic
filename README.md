@@ -14,3 +14,6 @@ Hobbyistic is a web application that helps provide a fun and efficient way to le
 * Sukhbir Sekhon - Full Stack Developer
 * Nicholas Lawson - Front-end Developer / Project Manager
 * Brendan Sitton - Cybersecurity Specialist / Public Speaker / Tester
+
+## Stack
+Node.JS - MongoDB - Express - Angular
