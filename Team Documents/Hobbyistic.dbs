@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="Hobbyistic" id="Project-81d" database="MongoDb" >
+	<schema name="Hobbyistic" >
+		<table name="users" prior="user" >
+			<column name="_id" type="objectId" jt="-8" mandatory="y" />
+			<column name="username" type="string" jt="12" />
+			<column name="email" type="string" jt="12" />
+			<column name="salt" prior="password" type="string" jt="12" />
+			<column name="hash" type="string" jt="12" />
+			<column name="hobbies" type="array[object]" jt="4999545" >
+				<column name="name" type="string" jt="12" />
+				<column name="widgets" type="array[object]" jt="4999545" >
+					<column name="name" type="string" jt="12" />
+					<column name="type" type="string" jt="12" />
+				</column>
+				<column name="extlinks" type="array[string]" jt="2003" />
+				<column name="statistics" type="array[object]" jt="4999545" >
+					<column name="name" type="string" jt="12" />
+					<column name="type" type="string" jt="12" />
+					<column name="categories" type="array[string]" jt="2003" />
+				</column>
+			</column>
+			<column name="settings" type="object" jt="4999544" >
+				<column name="calendar" type="bool" jt="16" />
+				<column name="motivation" type="bool" jt="16" />
+				<column name="helpfullinks" type="bool" jt="16" />
+				<column name="statistics" type="bool" jt="16" />
+				<column name="notificationsall" type="bool" jt="16" />
+				<column name="notificationsemail" type="bool" jt="16" />
+				<column name="notificationssms" type="bool" jt="16" />
+				<column name="notificationswhatsapp" type="bool" jt="16" />
+			</column>
+			<index name="_id_" unique="PRIMARY_KEY" >
+				<column name="_id" />
+			</index>
+		</table>
+	</schema>
+	<connector name="MyDb" database="MySql" host="localhost" port="3306" user="root" useSystemProxy="false" />
+	<layout name="Default Layout" id="Layout-12e" show_relation="columns" >
+		<entity schema="Hobbyistic" name="users" column="hobbies" color="3986C1" x="464" y="208" />
+		<entity schema="Hobbyistic" name="users" column="settings" color="3986C1" x="448" y="384" />
+		<entity schema="Hobbyistic" name="users" column="hobbies.statistics" color="3986C1" x="672" y="304" />
+		<entity schema="Hobbyistic" name="users" color="C1D8EE" x="304" y="208" />
+		<entity schema="Hobbyistic" name="users" column="hobbies.widgets" color="3986C1" x="640" y="208" />
+		<callout x="48" y="48" pointer="Round" >
+			<comment><![CDATA[A layout is a diagram with tools.
+- For a better understanding of the schema, create multiple layouts.
+- Right-click the layout to create new tables. 
+- Double-click table headers to edit. 
+- The schema will be saved to the model file. 
+- Later, you can connect to any database and deploy the schema into the database.]]></comment>
+		</callout>
+		<script name="hobbies" id="Editor-1581" language="SQL" >
+			<string><![CDATA[Hobbyistic.users.find()]]></string>
+		</script>
+	</layout>
+</project>
